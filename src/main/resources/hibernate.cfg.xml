@@ -21,8 +21,8 @@
     <property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
 	<property name="net.sf.ehcache.configurationResourceName">/myehcache.xml</property>
     <!-- Mapping Details -->
-    <mapping class="com.prowings.one_to_one_bi.Employee"></mapping>
-    <mapping class="com.prowings.one_to_one_bi.Account"></mapping>
+    <mapping class="com.prowings.one_to_many_bi.Employee"></mapping>
+    <mapping class="com.prowings.one_to_many_bi.Account"></mapping>
 
   </session-factory>
 </hibernate-configuration>

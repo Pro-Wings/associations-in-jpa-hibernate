@@ -1,11 +1,15 @@
-package com.prowings.one_to_one_bi;
+package com.prowings.one_to_many_bi;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
@@ -20,18 +24,16 @@ public class Employee {
 	private String name;
 	@Column
 	private double salary;
-	@OneToOne
-	@JoinTable(name = "EMPLOYEE_ACCCOUNT",
-     joinColumns = @JoinColumn(name = "EMPLOYEE_ID"),
-     inverseJoinColumns = @JoinColumn(name = "ACCOUNT_ID"))
-//	@PrimaryKeyJoinColumn
-	private Account account;
+
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="EMPLOYEE_ID")
+	private Set<Account> account;
 
 	public Employee() {
 		super();
 	}
 
-	public Employee(String name, double salary, Account account) {
+	public Employee(String name, double salary, Set<Account> account) {
 		super();
 		this.name = name;
 		this.salary = salary;
@@ -62,11 +64,11 @@ public class Employee {
 		this.salary = salary;
 	}
 
-	public Account getAccount() {
+	public Set<Account> getAccount() {
 		return account;
 	}
 
-	public void setAccount(Account account) {
+	public void setAccount(Set<Account> account) {
 		this.account = account;
 	}
 
@@ -74,5 +76,7 @@ public class Employee {
 	public String toString() {
 		return "Employee [id=" + id + ", name=" + name + ", salary=" + salary + ", account=" + account + "]";
 	}
+	
+	
 
 }

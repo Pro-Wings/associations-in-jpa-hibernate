@@ -27,8 +27,8 @@ public class TestOneToOneBidirectionalAssociation {
 		employee.setAccount(account);
 //		account.setEmployee(employee);
 		
-		session.save(employee);
-		session.save(account);
+//		session.save(employee);
+//		session.save(account);
 		transaction.commit();
 		session.close();
 		
@@ -38,18 +38,18 @@ public class TestOneToOneBidirectionalAssociation {
 		Session session2 = sessionFactory.openSession();
 		Transaction transaction2 = session2.beginTransaction();
 		
-		Employee retrievedEmp = session2.get(Employee.class, empId);
+//		Employee retrievedEmp = session2.get(Employee.class, empId);
 		
-		System.out.println(retrievedEmp.getId());
-		System.out.println(retrievedEmp.getName());
-		System.out.println(retrievedEmp.getSalary());
-		System.out.println(retrievedEmp.getAccount().getAccountNumber());
-		
-		Account retrievedAcc = session2.get(Account.class, accId);
-		System.out.println(retrievedAcc.getId());
-		System.out.println(retrievedAcc.getAccountName());
-		System.out.println(retrievedAcc.getAccountNumber());
-		System.out.println(retrievedAcc.getEmployee().getName());
+//		System.out.println(retrievedEmp.getId());
+//		System.out.println(retrievedEmp.getName());
+//		System.out.println(retrievedEmp.getSalary());
+//		System.out.println(retrievedEmp.getAccount().getAccountNumber());
+//		
+//		Account retrievedAcc = session2.get(Account.class, accId);
+//		System.out.println(retrievedAcc.getId());
+//		System.out.println(retrievedAcc.getAccountName());
+//		System.out.println(retrievedAcc.getAccountNumber());
+//		System.out.println(retrievedAcc.getEmployee().getName());
 		
 		transaction2.commit();
 		session2.close();

@@ -1,13 +1,16 @@
-package com.prowings.one_to_one_bi;
+package com.prowings.one_to_many_bi;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 @Entity
 public class Account {
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "Acc_id")
 	private int id;
 	@Column
@@ -15,19 +18,17 @@ public class Account {
 	@Column
 	private String accountName;
 
-//	@OneToOne
-	@OneToOne(mappedBy = "account")
-	private Employee employee;
+//	private Employee employee;
 
 	public Account() {
 		super();
 	}
 
-	public Account(int accountNumber, String accountName, Employee employee) {
+	public Account(int accountNumber, String accountName/* , Employee employee */) {
 		super();
 		this.accountNumber = accountNumber;
 		this.accountName = accountName;
-		this.employee = employee;
+//		this.employee = employee;
 	}
 
 	public int getId() {
@@ -54,19 +55,13 @@ public class Account {
 		this.accountName = accountName;
 	}
 
-	public Employee getEmployee() {
-		return employee;
-	}
-
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
-	}
-
-	@Override
-	public String toString() {
-		return "Account [id=" + id + ", accountNumber=" + accountNumber + ", accountName=" + accountName + ", employee="
-				+ employee + "]";
-	}
+//	public Employee getEmployee() {
+//		return employee;
+//	}
+//
+//	public void setEmployee(Employee employee) {
+//		this.employee = employee;
+//	}
 
 	
 }
